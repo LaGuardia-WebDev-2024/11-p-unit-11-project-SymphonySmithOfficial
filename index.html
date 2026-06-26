@@ -15,55 +15,98 @@ Select ONE Additional
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Unit 11 Project</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <button id="mem1-button">Memory #1</button>
-    <button id="mem2-button">Memory #2</button>
-    <button id="mem3-button">Memory #3</button>
-    <h1>My Top 3 Memories of <span>This Year</span></h1>
-    <ol>
-      <li>
-        <h3 id="mem1">Memory #1</h3>
-        <p>More about this memory.</p>
-      </li>
+<head>
+  <title>Anime Reveal</title>
 
-      <li>
-        <h3 id="mem2">Memory #2</h3>
-        <p>More about this memory.</p>
-      </li>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      <li>
-        <h3 id="mem3">Memory #3</h3>
-        <p>More about this memory</p>
-      </li>
-    </ol>
+  <style>
+    /* Five CSS Declarations */
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
+    .anime-img {
+      width: 300px;
+      border-radius: 10px;
+      display: none; /* Hidden until button is clicked */
+      margin-top: 20px;
+    }
 
-      // ======================== Button #1
-      $("#mem1-button").click(function () {
-        $("#mem1").css("color", "purple");
-      });
+    #buttons {
+      margin-top: 30px;
+    }
 
-      // ======================== Button #2
-      $("#mem2-button").click(function () {
-        $("#mem2").css("color", "blue");
-      });
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background: #222;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
 
-      // ======================== Button #3
-      $("#mem3-button").click(function () {
-        $("#mem3").css("color", "green");
-        $("#mem3").text("Coding Parties! 🎉");
-      });
+    button:hover {
+      background: #444;
+    }
+  </style>
+</head>
 
+<body>
 
-    </script>
-  </body>
+  <h1 class="title">Click a Button to Reveal an Anime</h1>
+
+  <!-- Buttons -->
+  <div id="buttons">
+    <button id="btn-naruto">Show Naruto</button>
+    <button id="btn-demon">Show Demon Slayer</button>
+    <button id="btn-onepiece">Show One Piece</button>
+  </div>
+
+  <!-- Three Images -->
+  <img id="naruto" class="anime-img" src="https://4kwallpapers.com/images/wallpapers/naruto-team-7-1080x1920-19989.jpg">
+  <img id="demon" class="anime-img" src="https://tse3.mm.bing.net/th/id/OIP.Lhxf8eHBgpKcgusxjQ_2NAHaJI?rs=1&pid=ImgDetMain&o=7&rm=3">
+  <img id="onepiece" class="anime-img" src="https://tse2.mm.bing.net/th/id/OIP.DD9npZzBS8_WPWA3HZ4bvQHaDt?rs=1&pid=ImgDetMain&o=7&rm=3">
+
+  <script>
+    // jQuery Selectors:
+    // Element selector: $("img")
+    // ID selector: $("#btn-naruto")
+    // Class selector: $(".anime-img")
+
+    // jQuery Methods Used:
+    // .hide(), .show(), .css(), .text(), .fadeIn()
+
+    // Hide all images at start
+    $(".anime-img").hide();
+
+    // Naruto Button
+    $("#btn-naruto").click(function() {
+      $(".anime-img").hide();        // hide all
+      $("#naruto").fadeIn();         // show Naruto
+      $(".title").text("Naruto Revealed!"); // change text
+    });
+
+    // Demon Slayer Button
+    $("#btn-demon").click(function() {
+      $(".anime-img").hide();
+      $("#demon").show();            // show Demon Slayer
+      $(".title").css("color", "red"); // change CSS
+      $(".title").text("Demon Slayer Revealed!");
+    });
+
+    // One Piece Button
+    $("#btn-onepiece").click(function() {
+      $(".anime-img").hide();
+      $("#onepiece").show();         // show One Piece
+      $(".title").css("color", "blue");
+      $(".title").text("One Piece Revealed!");
+    });
+  </script>
+
+</body>
 </html>
-
-<!--- Taken From Khan Academy HTML/JS: Making webpages interactive with jQuery-->
